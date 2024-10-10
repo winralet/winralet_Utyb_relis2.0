@@ -1,0 +1,172 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #fff;
+    background-color: #f9f9f9;
+     background: linear-gradient(94deg, #ff4081, #ff9800);
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+  }
+  
+  section {
+    background-color: #fff;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0 1 0);
+  }
+  
+  h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  li:last-child {
+    border-bottom: none;
+  }
+  
+  button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #444;
+  }
+  
+  .delete-button {
+    background-color: #f44336;
+  }
+  
+  .watch-button {
+    background-color: #4CAF50;
+  }
+  
+  /* izbran.html specific styles */
+  .favorited-videos {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #ff4081;
+    padding: 20px;
+    border: px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+  }
+  
+  .favorited-videos ul {
+    padding: 20px;
+  }
+  
+  .favorited-videos li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .favorited-videos li h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .favorited-videos li p {
+    font-size: 14px;
+    color: #fff;
+  }
+  
+  .favorited-videos li button {
+    margin-left: 20px;
+  }
+  
+  .favorited-videos li .delete-button {
+    background-color: #f44336;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .favorited-videos li .watch-button {
+    background-color: #ffba00;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .favorited-videos li .delete-button:hover {
+    background-color: #f55555;
+  }
+  
+  .favorited-videos li .watch-button:hover {
+    background-color: #3e8e41;
+  }
+
+
+
+
+
+  @media (max-width: 700px) {
+    main {
+      flex-direction: column;
+    }
+    section {
+      flex-basis: 100%;
+    }
+    .favorited-videos {
+      max-width: 100%;
+      margin: 10px auto;
+    }
+    .favorited-videos ul {
+      padding: 10px;
+    }
+    .favorited-videos li {
+      display: block;
+    }
+    .favorited-videos li h3 {
+      font-size: 14px;
+    }
+    .favorited-videos li p {
+      font-size: 12px;
+    }
+    .favorited-videos li button {
+      margin-left: 10px;
+    }
+  }

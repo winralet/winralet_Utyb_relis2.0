@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Избранное</title>
+    <link rel="stylesheet" href="izbran.css">
+</head>
+<body>
+    <section class="favorited-videos">
+        <h2>Избранное</h2>
+        <ul id="favorites-list"></ul>
+      </section>
+      
+      <script>
+        // Load the favorites from local storage
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const favoritesList = document.getElementById('favorites-list');
+        favorites.forEach((favorite) => {
+          const favoriteVideoHTML = `
+            <li>
+              <h3>${favorite.title}</h3>
+              <p>Video ID: ${favorite.id}</p>
+              <button class="delete-button" data-video-id="${favorite.id}">Удалить</button>
+              <button class="watch-button" data-video-id="${favorite.id}">Смотреть</button>
+            </li>
+          `;
+          favoritesList.innerHTML += favoriteVideoHTML;
+        });
+
+
+
+
+
+        function addVideoToFavorites(videoId, videoTitle) {
+  // Get the favorites list element
+  const favoritesList = document.getElementById('favorites-list');
+  
+  // Create a new favorite video object
+  const favoriteVideo = {
+    id: videoId,
+    title: videoTitle,
+  };
+  
+  // Add the favorite video to the favorites list
+  const favoriteVideoHTML = `
+    <li>
+      <h3>${favoriteVideo.title}</h3>
+      <p>Video ID: ${favoriteVideo.id}</p>
+    </li>
+  `;
+  favoritesList.innerHTML += favoriteVideoHTML;
+  
+  // Save the favorite video to local storage
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  favorites.push(favoriteVideo);
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+}
+
+
+
+function deleteFavoriteVideo(videoId) {
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  const index = favorites.findIndex((favorite) => favorite.id === videoId);
+  if (index !== -1) {
+    favorites.splice(index, 1);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    const favoritesList = document.getElementById('favorites-list');
+    favoritesList.innerHTML = '';
+    favorites.forEach((favorite) => {
+      const favoriteVideoHTML = `
+        <li>
+          <h3>${favorite.title}</h3>
+          <p>Video ID: ${favorite.id}</p>
+          <button class="delete-button" data-video-id="${favorite.id}">Удалить</button>
+          <button class="watch-button" data-video-id="${favorite.id}">Смотреть</button>
+        </li>
+      `;
+      favoritesList.innerHTML += favoriteVideoHTML;
+    });
+  }
+}
+
+
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('delete-button')) {
+    const videoId = event.target.dataset.videoId;
+    deleteFavoriteVideo(videoId);
+  }
+});
+
+// script.js
+function watchVideo(videoId) {
+  const videoUrl = `VIDEO_URL_${videoId}`; // Replace with actual video URL
+  window.open(videoUrl, '_blank');
+}
+
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('watch-button')) {
+    const videoId = event.target.dataset.videoId;
+    watchVideo(videoId);
+  }
+});
+
+
+function watchVideo(videoId) {
+  const videoUrls = {
+    '1_prevos': 'prevos.html',
+    '2_komar':'komar.html',
+    '3_burdozer': 'burdozer.html',
+    '4_kot_mokr': 'kot_mokr.html',
+    '5_glyh': 'glyh.html',
+    '6_xoryp': 'xoryp.html',
+    '7_mama':'mama.html',
+    '8_spreh':'spreh.html',
+    '9_sigma':'sigma.html',
+    '10_ma':'ma.html',
+    '11_bay':'bay.html',
+    // Add more video URLs here
+  };
+  const videoUrl = videoUrls[videoId];
+  window.open(videoUrl, '_blank');
+}
+      </script>
+</body>
+</html>
